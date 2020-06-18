@@ -11,4 +11,10 @@ Color Screen
     If you are a developer, you can customize the random color
     selection by disabling the unnecessary color channel. You
     can also get a transparent color by turning on a random alpha
-    channel.
+    channel. To do this, replace the call
+    "GetRandomColor.allColors().getColor()" on
+    "GetRandomColor.customColors(bool a, bool r, bool g , bool b).getColor()"
+    if r,g,b true - the channel used in result color.
+    if a true - alpha channel = random / if false - result color no transparent
+
+    Good luck!!!
