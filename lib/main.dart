@@ -1,3 +1,4 @@
+import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:colorscreen/utils/GetRandomColor.dart';
@@ -35,15 +36,20 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Color _colorBack = Colors.white;
   Color _colorText = Colors.black;
+  static AudioCache player = new AudioCache();
 
   void _changeColors() {
     setState(() {
-      //GetRandomColor.allColors() - random color on r,g,b channels. alpha  = 255
-      //GetRandomColor.customColors(a, r, g, b) - if r,g,b true - the channel used in color.
+      // -GetRandomColor.allColors() - random color on r,g,b channels. alpha  = 255
+      // -GetRandomColor.customColors(a, r, g, b) - if r,g,b true - the channel used in color.
       //                                - if alpha true - alpha = random / if false - alpha = 255
       _colorBack = GetRandomColor.allColors().getColor();
       //_colorBack = GetRandomColor.customColors(false, false, true, false).getColor();
       _colorText = InversionColor().getInversionColor(_colorBack);
+
+      // SystemSound.play(SystemSoundType.click);
+      // or
+      player.play("sound/klac.mp3");
     });
   }
 
